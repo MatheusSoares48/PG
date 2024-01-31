@@ -33,13 +33,16 @@ function Navbar() {
         
 
         <nav className={`${open ? "block" : "hidden"} w-full lg:flex lg:items-center lg:w-auto`}>
-          <ul className="flex flex-col items-start lg:flex-row lg:justify-between">
-            
-            <li>
-              <a href='/categoria' className="lg:px-8 p-2 block rounded-xl bg-white">Categoria</a>
-            </li>
+          
+          <div className="container flex justify-between text-lg">
+            <Link to='/home' className='text-2xl font-bold uppercase'>Farmacia</Link>
 
-          </ul>
+            <div className='flex gap-4'>
+              <Link to='/postagens' className='hover:underline'>Categoria</Link>
+              <Link to='/temas' className='hover:underline'>Temas</Link>
+              <Link to='/cadastroTema' className='hover:underline'>Cadastrar tema</Link>
+            </div>
+          </div>
 
         </nav>
       </div>
