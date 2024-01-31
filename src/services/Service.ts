@@ -1,28 +1,25 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = 'https://farmacia-ug0p.onrender.com';
+const api = axios.create({
+    baseURL: ' https://farmacia-ug0p.onrender.com'
+})
 
-interface Categoria {
-    nome: string;
+export const buscar = async (url: string, setDados: Function) => {
+    const resposta = await api.get(url)
+    setDados(resposta.data)
 }
 
-export const getAllCategorias = async () => {
-    const response = await axios.get<Categoria[]>(`${API_URL}/categorias`);
-    return response.data;
-};
+export const cadastrar = async (url: string, dados: object, setDados: Function) => {
+    const resposta = await api.post(url, dados)
+    setDados(resposta.data)
+}
 
-export const createCategoria = async (categoria: Categoria) => {
-    const response = await axios.post<Categoria>(`${API_URL}/categorias`, categoria);
-    return response.data;
-};
+export const atualizar = async (url: string, dados: object, setDados: Function) => {
+    const resposta = await api.put(url, dados)
+    setDados(resposta.data)
+}
 
-export const updateCategoria = async (id: string, categoria: Categoria) => {
-    const response = await axios.put<Categoria>(`${API_URL}/categorias/${id}`, categoria);
-    return response.data;
-};
-
-export const deleteCategoria = async (id: string) => {
-    await axios.delete(`${API_URL}/categorias/${id}`);
-};
-
+export const deletar = async (url: string) => {
+    await api.delete(url)
+}
 

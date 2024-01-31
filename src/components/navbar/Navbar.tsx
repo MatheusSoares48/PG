@@ -1,52 +1,28 @@
-import { List, X } from "@phosphor-icons/react";
-import { useState } from "react";
+import { Basket } from "@phosphor-icons/react";
 import { Link } from "react-router-dom"
 
 function Navbar() {
 
-  const [open, setOpen] = useState(false);
-
   return (
-    <header className='bg-emerald-300 py-4'>
-      <div className='flex items-center justify-between xl:max-w-9xl xl:mx-auto px-[4%] flex-wrap w-full'>
-        <a href='/home' className="text-2xl font-bold">Farmacia</a>
-      {
-        open ?  
-          
-          <X 
-            size={24} 
-            color="#050505" 
-            weight="bold"   
-            className="lg:hidden block h-6 w-6 cursor-pointer"
-            onClick={() => setOpen(!open)}
-          />
-        
-          :
-          <List 
-          size={24} 
-          color="#050505" 
-          weight="bold" 
-          className="lg:hidden block h-6 w-6 cursor-pointer"
-          onClick={() => setOpen(!open)}
-        />
-      }
-        
+    <>
+        <div className='w-full bg-teal-500 text-white flex justify-center py-2'>
+            <div className="container flex justify-between text-lg">
+                <Link to="/home" className='text-2xl font-bold uppercase'>
+                    <div className='flex flex-row gap-2 justify-center items-center'>
+                    <Basket size={32} weight='bold' />
+                        <p className=''>Farmacia</p>
+                    </div>
+                </Link>
 
-        <nav className={`${open ? "block" : "hidden"} w-full lg:flex lg:items-center lg:w-auto`}>
-          
-          <div className="container flex justify-between text-lg">
-            <Link to='/home' className='text-2xl font-bold uppercase'>Farmacia</Link>
 
-            <div className='flex gap-4'>
-              <Link to='/postagens' className='hover:underline'>Categoria</Link>
-              <Link to='/temas' className='hover:underline'>Temas</Link>
-              <Link to='/cadastroTema' className='hover:underline'>Cadastrar tema</Link>
+                <div className='flex gap-4 justify-center items-center'>
+                    <Link to="/produto" className='font-semibold'>Produtos</Link>
+                    <Link to="/categorias" className='font-semibold'>Categorias</Link>
+                    <Link to="/cadastroCategoria" className='font-semibold'>Cadastrar categoria</Link>
+                </div>
             </div>
-          </div>
-
-        </nav>
-      </div>
-    </header>
+        </div>
+    </>
   )
 }
 

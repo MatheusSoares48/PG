@@ -2,29 +2,29 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/footer/Footer"
 import Navbar from "./components/navbar/Navbar"
 import Home from "./pages/home/Home"
-import GetAllCategorias from "./components/categoria/getAllCategorias/GetAllCategorias";
-import CategoriaForm from "./components/categoria/categoriaForm/CategoriaForm";
-import DeleteCategoria from "./components/categoria/deleteCategoria/DeleteCategoria";
+import ListarCategoria from "./components/categoria/listarCategoria/ListarCategoria";
+import FormCategoria from "./components/categoria/formCategoria/FormCategoria";
+import DeletarCategoria from "./components/categoria/deleteCategoria/DeleteCategoria";
 
 function App() {
   
   return (
     <>
-        <BrowserRouter>
+      <BrowserRouter>
         <Navbar />
-          <div className='min-h-[80vh]'>
-            <Routes>
-              <Route path="/home" element={<Home />} />
-              <Route path="/categoria" element={<GetAllCategorias />} />
-              <Route path="/cadastroCategoria" element={<CategoriaForm />} />
-              <Route path="/editarCategoria/:id" element={<CategoriaForm />} />
-              <Route path="/deletarCategoria/:id" element={<DeleteCategoria />} />
-            </Routes>
-          </div>
-          <Footer />
-        </BrowserRouter>
+        <div className="min-h-[80vh]">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path='/categorias' element={<ListarCategoria />} />
+            <Route path="/cadastroCategoria" element={<FormCategoria />} />
+            <Route path="/editarCategoria/:id" element={<FormCategoria />} />
+            <Route path="/deletarCategoria/:id" element={<DeletarCategoria />} />
+          </Routes>
+        </div>
+        <Footer />
+      </BrowserRouter>
     </>
-  );
-}
-
-export default App;
+    )
+  }
+  export default App
